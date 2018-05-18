@@ -1,0 +1,56 @@
+extends layout
+
+block content
+    h1= title
+    if(filters)
+            each filter, i in filters
+                div= filter
+                        a(href='computerTable?remove=' + i)    X
+    div= "Count: " + Object.keys(computers).length
+    div(style='overflow-x:auto;')
+        table
+            tbody
+                tr
+                    td
+                        a(href='/computerTable?sortby=ICN')
+                            div='ICN'
+                    td
+                        a(href='/computerTable?sortby=EmployeeID')
+                            div= "Employee ID"
+                    td
+                        a(href='/computerTable?sortby=Make')
+                            div= "Make"
+                    td= "Model"
+                    td= "Serial Number"
+                    td= "Service Tag"
+                    td= "Express Service Code"
+                    td= "Type"
+                    td= "Hardware ID"
+                    td= "Date Acquired"
+                    td= "Warranty"
+                    td= "Home Checkout"
+                    td= "Notes"
+                each computer in computers
+                    tr
+                        td
+                            a(href='/computerTable?where=ICN=#{computer.ICN}')
+                                div= computer.ICN
+                                    //i(class="material-icons") laptop
+                        td
+                            a(href='/computerTable?where=EmployeeID=#{computer.EmployeeID}')
+                                div= computer.EmployeeID
+                        td
+                            a(href='/computerTable?where=Make=\'#{computer.Make}\'')
+                                div= computer.Make
+                        td
+                            a(href='/computerTable?where=Model=\'#{computer.Model}\'')
+                                div= computer.Model
+                        td= computer.SerialNumber
+                        td= computer.ServiceTag
+                        td= computer.ExpressServiceCode
+                        td= computer.Type
+                        td= computer.HardwareID
+                        td= computer.DateAcquired
+                        td= computer.Warranty
+                        td= computer.HomeCheckout
+                        td= computer.Notes

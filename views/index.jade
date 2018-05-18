@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    h1= title
+    div(style='overflow-x:auto;')
+        table
+            tbody
+                tr
+                    td
+                        a(href='/employeesTable?sortby=employeeId')
+                            div='Employee ID'
+                    td
+                        a(href='/employeesTable?sortby=firstName')
+                            div= "First Name"
+                    td
+                        a(href='/employeesTable?sortby=lastName')
+                            div= "Last Name"
+                    td= "Category"
+                    td= "Office Location"
+                    td= "Building"
+                    td= "Username"
+                    td= "Email"
+                    td= "Roation Group"
+                    td= "Date Switched"
+                    td= "Notes"
+                each employee in employees
+                    tr
+                        td= employee.employeeId
+                        td= employee.firstName
+                        td= employee.lastName
+                        td= employee.category
+                        td= employee.officeLocation
+                        td= employee.building
+                        td= employee.username
+                        td= employee.email
+                        td= employee.rotationGroup
+                        td= employee.dateSwitched
+                        td= employee.notes
